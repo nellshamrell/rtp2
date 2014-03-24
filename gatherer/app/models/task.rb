@@ -1,14 +1,7 @@
-class Task
-
-  attr_accessor :size, :completed_at
-
-  def initialize(options = {})
-    complete!(options[:completed]) if options[:completed]
-    @size = options[:size]
-  end
+class Task < ActiveRecord::Base
 
   def complete!(date = nil)
-    @completed_at = (date || Time.current)
+    self.completed_at = (date || Time.current)
   end
 
   def complete?
